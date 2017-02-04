@@ -8,7 +8,11 @@ This is a side project revisiting an old project from a previous course I took t
 
 ### TODO
 Animate the graph traversals of each passenger
-Create custom paths so that airports can be added.
+
+Create custom paths so that airports can be added
+
 Add time intervals in the form of frame rate
+
 Add cost($) for paths so passengers can choose whether to travel based on time or cost
+
 Add different colors for different vehicle types
