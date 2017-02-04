@@ -1,9 +1,9 @@
-Loc_name,Latitude,Longitude,X,Y,vehicleTypes (Aircraft, Bart, Bicycle, Bus, Car, Taxi)
-Santa Cruz,-36.9719,-122.0264,425,880,1|0|1|0|1|1
-San Francisco,-37.7833,-122.4167,110,75,1|1|1|1|1|1
-San Ramon,-37.7800,-121.9781,480,85,0|0|1|1|1|1
-Dublin,-37.7022,-121.9358,515,150,0|1|1|1|1|1
-Pleasanton,-37.6625,-121.8747,550,190,0|1|1|1|1|1
-Livermore,-37.6819,-121.7681,640,170,1|1|1|1|1|1
-Palo Alto,37.442151,-122.143184,340,410,0|0|1|1|1|1
-San Jose,37.338009,-121.886214,540,515,1|0|1|0|1|1
+Loc_name,X,Y,vehicleTypes (Aircraft, Bart, Bicycle, Bus, Car, Taxi)
+Santa Cruz,425,880,1|0|1|0|1|1
+San Francisco,110,75,1|1|1|1|1|1
+San Ramon,480,85,0|0|1|1|1|1
+Dublin,515,150,0|1|1|1|1|1
+Pleasanton,550,190,0|1|1|1|1|1
+Livermore,640,170,1|1|1|1|1|1
+Palo Alto,340,410,0|0|1|1|1|1
+San Jose,540,515,1|0|1|0|1|1

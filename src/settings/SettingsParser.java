@@ -24,14 +24,14 @@ public class SettingsParser {
 				String[] payload = line.split(",");
 
 //				// Split vehicle types and parse them based on their values
-//				String[] types = payload[5].split("\\|");
-//				boolean[] vehicleTypes = new boolean[types.length];
-//				for (int i = 0; i < types.length; i++) {
-//					vehicleTypes[i] = types[i].equals("1");
-//				}
+				String[] types = payload[3].split("\\|");
+				boolean[] vehicleTypes = new boolean[types.length];
+				for (int i = 0; i < types.length; i++) {
+					vehicleTypes[i] = types[i].equals("1");
+				}
 
 				// Create a new Location object and add it to the list
-				Location loc = new Location(payload[0], Double.parseDouble(payload[1]), Double.parseDouble(payload[2]), Integer.parseInt(payload[3]), Integer.parseInt(payload[4]) /*, vehicleTypes*/);
+				Location loc = new Location(payload[0], Integer.parseInt(payload[1]), Integer.parseInt(payload[2]) , vehicleTypes);
 				Visualize.locations.add(loc);
 				Visualize.g.addVertex(loc);
 			}
@@ -51,9 +51,9 @@ public class SettingsParser {
 				String[] payload = line.split(",");
 				Location from = Visualize.g.getGraph().get(payload[0]);
 				Location to = Visualize.g.getGraph().get(payload[1]);
-				for (int i = 0; i < 1; i++) {
-					//if (from.getVehicleTypes()[i] && to.getVehicleTypes()[i])
-						Visualize.g.addEdge(from, to, Location.getDistance(from,to) /*, Location.vehicleTypeList[i]*/);
+				for (int i = 0; i < 6; i++) {
+					if (from.getVehicleTypes()[i] && to.getVehicleTypes()[i])
+						Visualize.g.addEdge(from, to, Location.getDistance(from,to) , Location.vehicleTypeList[i]);
 				}
 			}
 		}catch (IOException e){

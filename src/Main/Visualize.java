@@ -33,7 +33,7 @@ public class Visualize extends PApplet {
 		SettingsParser.loadVehicles();
 
 		for (Passenger p : passengers) {
-			g.computePaths(p.getCurrentLoc());
+			g.computePaths(p);
 			System.out.printf("%s went on this path: %s\n", p.getName(),Graph.getShortestPathTo(p.getDest()));
 		}
 
@@ -47,8 +47,9 @@ public class Visualize extends PApplet {
 			fill(255, 0, 0);
 			ellipse(x.getX(), x.getY(), 20,20);
 
-			for(Edge e : x.getAdjacent()){
-				line(x.getX(), x.getY(), e.to.getX(), e.to.getY());
+			for(String vehicle : Location.vehicleTypeList){
+				for (Edge e : x.getAdjacent().get(vehicle))
+					line(x.getX(), x.getY(), e.to.getX(), e.to.getY());
 			}
 		}
 
