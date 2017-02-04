@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8f07177-6897-4a4f-86bb-1ad026d656d8" name="Default" comment="Added ability for passenger to travel based on vehicle preference">
+    <list default="true" id="c8f07177-6897-4a4f-86bb-1ad026d656d8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Graph/Edge.java" afterPath="$PROJECT_DIR$/src/Graph/Edge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Graph/Graph.java" afterPath="$PROJECT_DIR$/src/Graph/Graph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Graph/Location.java" afterPath="$PROJECT_DIR$/src/Graph/Location.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Visualize.java" afterPath="$PROJECT_DIR$/src/Main/Visualize.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/settings/Locations.txt" afterPath="$PROJECT_DIR$/src/settings/Locations.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/settings/Paths.txt" afterPath="$PROJECT_DIR$/src/settings/Paths.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/settings/SettingsParser.java" afterPath="$PROJECT_DIR$/src/settings/SettingsParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TransportationNetwork/settings/Locations.txt" afterPath="$PROJECT_DIR$/out/production/TransportationNetwork/settings/Locations.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TransportationNetwork/settings/Paths.txt" afterPath="$PROJECT_DIR$/out/production/TransportationNetwork/settings/Paths.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -851,7 +846,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1486188522526</updated>
-      <workItem from="1486188524712" duration="2519000" />
+      <workItem from="1486188524712" duration="2548000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted extra .iml file">
       <created>1486188674532</created>
@@ -860,11 +855,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486188674532</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added ability for passenger to travel based on vehicle preference">
+      <created>1486191057798</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1486191057798</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2519000" />
+    <option name="totallyTimeSpent" value="2548000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
