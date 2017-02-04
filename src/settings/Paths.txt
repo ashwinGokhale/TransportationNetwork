@@ -1,0 +1,12 @@
+startPoint,destPoint
+San Francisco,San Ramon
+San Ramon,Dublin
+Dublin,Pleasanton
+Dublin,San Francisco
+Pleasanton,San Jose
+Pleasanton,Livermore
+Palo Alto,San Francisco
+Pleasanton,Palo Alto
+Santa Cruz,Palo Alto
+San Jose,Palo Alto
+San Jose,Santa Cruz
