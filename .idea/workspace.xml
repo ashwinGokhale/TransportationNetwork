@@ -802,7 +802,7 @@
       <option name="presentableId" value="Default" />
       <updated>1486188522526</updated>
       <workItem from="1486188524712" duration="4376000" />
-      <workItem from="1486263840254" duration="10186000" />
+      <workItem from="1486263840254" duration="10245000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted extra .iml file">
       <created>1486188674532</created>
@@ -829,7 +829,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14562000" />
+    <option name="totallyTimeSpent" value="14621000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
