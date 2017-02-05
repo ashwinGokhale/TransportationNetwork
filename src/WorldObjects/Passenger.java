@@ -2,6 +2,8 @@ package WorldObjects;
 
 import Graph.Location;
 
+import java.util.ArrayList;
+
 /**
  * @author Ashwin Gokhale.
  */
@@ -11,6 +13,7 @@ public class Passenger{
 	private Location dest;
 	private int preference;
 	private String vehiclePreference;
+	private ArrayList<Location> path;
 
 	public Passenger(String name, Location currentLoc, Location dest, int preference, String vehiclePreference) {
 		this.name = name;
@@ -38,5 +41,13 @@ public class Passenger{
 
 	public String getVehiclePreference() {
 		return vehiclePreference;
+	}
+
+	public ArrayList<Location> getPath() {
+		return path;
+	}
+
+	public void setPath(ArrayList<Location> path) {
+		this.path = path;
 	}
 }

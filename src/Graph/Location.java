@@ -28,7 +28,7 @@ public class Location implements Comparable<Location>{
 
 	}
 
-	String getName() {
+	public String getName() {
 		return name;
 	}
 
@@ -61,6 +61,7 @@ public class Location implements Comparable<Location>{
 	}
 
 	public String toString() {
-		return String.format("%s at (%d,%d)", getName(), getX(), getY());
+		return String.format("%s", getName());
 	}
+
 }

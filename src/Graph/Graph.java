@@ -78,8 +78,8 @@ public class Graph {
 		}
 	}
 
-	public static List<Location> getShortestPathTo (Location target) {
-		List<Location> path = new ArrayList<Location>();
+	public static ArrayList<Location> getShortestPathTo (Location target) {
+		ArrayList<Location> path = new ArrayList<Location>();
 		for (Location vertex = target; vertex != null; vertex = vertex.prev)
 			path.add(vertex);
 
