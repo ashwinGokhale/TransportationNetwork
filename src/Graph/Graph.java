@@ -1,6 +1,7 @@
 package Graph;
 
 import WorldObjects.Passenger;
+import WorldObjects.Vehicle;
 
 import java.util.*;
 
@@ -24,11 +25,19 @@ public class Graph {
 		return node;
 	}
 
+	public Set<String> getLocationNames(){
+		return graph.keySet();
+	}
+
+	public HashMap<String, Location> getGraph() {
+		return graph;
+	}
+
 	private boolean containsLocation(String node){
 		return graph.containsKey(node);
 	}
 
-	public void addEdge(Location from, Location to, double weight , String vehicleType){
+	public void addEdge(Location from, Location to, double weight , Vehicle vehicleType){
 		if (!containsLocation(from.getName()))
 			addVertex(from);
 
@@ -39,18 +48,13 @@ public class Graph {
 		to.addNeighbor(from, weight , vehicleType);
 	}
 
-	public Set<String> getLocationNames(){
-		return graph.keySet();
-	}
 
-	public HashMap<String, Location> getGraph() {
-		return graph;
-	}
-
+	// Implementation of Dijkstra's algorithm
 	public void computePaths(Passenger p) {
 
 		Location source = p.getCurrentLoc();
 
+		// Must reset every location distance and previous values upon each function call
 		for (Location x : graph.values()){
 			x.dist = Double.POSITIVE_INFINITY;
 			x.prev = null;
@@ -61,10 +65,12 @@ public class Graph {
 		vertexQueue.add(source);
 
 		while (!vertexQueue.isEmpty()) {
+
+			// Pop the Location with the least distance
 			Location u = vertexQueue.poll();
 
-			// Visit each edge exiting u
-			for (Edge e : u.getAdjacent().get(p.getVehiclePreference())) {
+			// Visit each edge exiting u with the specified vehicle preference
+			for (Edge e : u.getAdjacent().get(Vehicle.vehicles.get(p.getVehiclePreference()))) {
 				Location v = e.to;
 				double alt = u.dist + e.weight;
 				if (alt < v.dist) {
@@ -79,11 +85,16 @@ public class Graph {
 	}
 
 	public static ArrayList<Location> getShortestPathTo (Location target) {
-		ArrayList<Location> path = new ArrayList<Location>();
+		ArrayList<Location> path = new ArrayList<>();
 		for (Location vertex = target; vertex != null; vertex = vertex.prev)
 			path.add(vertex);
 
 		Collections.reverse(path);
+
+		// If no possible path, path will be [currentLoc, currentLoc]
+		if (path.size() == 1)
+			path.add(path.get(0));
+
 		return path;
 	}
 

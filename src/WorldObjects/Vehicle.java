@@ -3,38 +3,29 @@ package WorldObjects;
 import Graph.Location;
 import Main.Visualize;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * @author Ashwin Gokhale.
  */
 public class Vehicle{
-	static int numMade = 0;
-	static ArrayList<Vehicle> vehicles = new ArrayList<>();
+	public static HashMap<String,Vehicle> vehicles = new HashMap<>();
+	public static ArrayList<String> vehicleNames = new ArrayList<>(Arrays.asList("Aircraft", "Bart", "Bicycle", "Bus", "Car", "Taxi"));
 	private int speedOfTravel;
-	private String serviceState;
 	private double unitCost;
 	private int typeOfCost;
 	private int waitTime;
 	private Location currentLocation;
 
-	public Vehicle(String currentLocation, String serviceState, int speedOfTravel, int waitTime, double unitCost, int typeOfCost) {
+	public Vehicle(int speedOfTravel, int waitTime, double unitCost, int typeOfCost) {
 		this.speedOfTravel = speedOfTravel;
 		this.waitTime = waitTime;
-		this.currentLocation = Visualize.g.getGraph().get(currentLocation);
-		this.serviceState = serviceState;
 		this.unitCost = unitCost;
 		this.typeOfCost = typeOfCost;
-		vehicles.add(this);
-		numMade++;
 	}
 
 	public int getSpeedOfTravel() {
 		return speedOfTravel;
-	}
-
-	public String getServiceState() {
-		return serviceState;
 	}
 
 	public double getUnitCost() {
@@ -53,11 +44,15 @@ public class Vehicle{
 		return currentLocation;
 	}
 
+	public void setCurrentLocation(Location currentLocation) {
+		this.currentLocation = currentLocation;
+	}
+
 	public String toString() {
 		return "Current Location: " + getCurrentLocation();
 	}
 
-	public double calculateCostOfTravel(double unitCost, int typeOfCost, double distance){
+	public double calculateCostOfTravel(double distance){
 		// typeOfCost: 1 is fixed (regardless of time or distance), 2 is fixed + a factor of distance  (e.g. a Taxi cab),
 		// and 3 is based on fraction of distance (e.g. a Car where unitCost is expressed as cost/gallon)
 
@@ -66,10 +61,10 @@ public class Vehicle{
 				return unitCost;
 
 			case 2:
-				return unitCost + (distance * 3);
+				return unitCost + (distance * 2); // $2 per mile
 
 			case 3:
-				return distance / (30 * unitCost);
+				return distance / (30 * unitCost); // Cost per gallon per mile
 
 			default:
 				return 0.0;

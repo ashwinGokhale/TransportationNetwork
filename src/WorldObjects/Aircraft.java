@@ -6,7 +6,7 @@ package WorldObjects;
 public class Aircraft extends Vehicle{
 
 	// costOfTravel = fixed cost
-	public Aircraft(String currentLocation, String serviceState) {
-		super(currentLocation, serviceState, 575, 120, 400, 1);
+	public Aircraft() {
+		super(575, 120, 400, 1);
 	}
 }

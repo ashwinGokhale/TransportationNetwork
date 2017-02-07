@@ -1,8 +1,8 @@
-Car,San Francisco,None
-Car,Dublin,None
-Taxi,Santa Cruz,None
-Bus,San Ramon,None
-Bart,Livermore,None
-Aircraft,San Francisco,None
-Car,Palo Alto,None
-Taxi,Palo Alto,None
+Car,San Francisco
+Car,Dublin
+Taxi,Santa Cruz
+Bus,San Ramon
+Bart,Livermore
+Aircraft,San Francisco
+Car,Palo Alto
+Taxi,Palo Alto

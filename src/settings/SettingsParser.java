@@ -3,6 +3,7 @@ package settings;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 import Graph.Location;
@@ -24,16 +25,28 @@ public class SettingsParser {
 				String[] payload = line.split(",");
 
 //				// Split vehicle types and parse them based on their values
-				String[] types = payload[3].split("\\|");
+				String[] types = payload[5].split("\\|");
 				boolean[] vehicleTypes = new boolean[types.length];
-				for (int i = 0; i < types.length; i++) {
+				for (int i = 0; i < types.length; i++)
 					vehicleTypes[i] = types[i].equals("1");
+
+
+				ArrayList<Vehicle> vehiclePayload = new ArrayList<>(6);
+
+				// Initialize all Vehicles at that location
+				for (int i = 0; i < vehicleTypes.length; i++) {
+					if (vehicleTypes[i])
+						vehiclePayload.add(Vehicle.vehicles.get(Vehicle.vehicleNames.get(i)));
+					else
+						vehiclePayload.add(null);
 				}
 
 				// Create a new Location object and add it to the list
-				Location loc = new Location(payload[0], Integer.parseInt(payload[1]), Integer.parseInt(payload[2]) , vehicleTypes);
+				Location loc = new Location(payload[0], Double.parseDouble(payload[1]), Double.parseDouble(payload[2]), Integer.parseInt(payload[3]), Integer.parseInt(payload[4]) , vehicleTypes, vehiclePayload);
 				Visualize.locations.add(loc);
 				Visualize.g.addVertex(loc);
+
+
 			}
 
 		} catch (IOException e) {
@@ -53,7 +66,7 @@ public class SettingsParser {
 				Location to = Visualize.g.getGraph().get(payload[1]);
 				for (int i = 0; i < 6; i++) {
 					if (from.getVehicleTypes()[i] && to.getVehicleTypes()[i])
-						Visualize.g.addEdge(from, to, Location.getDistance(from,to) , Location.vehicleTypeList[i]);
+						Visualize.g.addEdge(from, to, Location.getDistance(from,to), from.getVehicles().get(i));
 				}
 			}
 		}catch (IOException e){
@@ -76,37 +89,31 @@ public class SettingsParser {
 		}
 	}
 
-	public static void loadVehicles(){
-		try{
-			BufferedReader br = new BufferedReader(new FileReader("./src/settings/Vehicles.txt"));
-
-			String line;
-
-			while ((line = br.readLine()) != null){
-				String[] payload = line.split(",");
-
-				switch (payload[0]){
-					case "Car":
-						new Car(payload[1], payload[2]);break;
-
-					case "Taxi":
-						new Taxi(payload[1], payload[2]);break;
-
-					case "Bus":
-						new Bus(payload[1], payload[2]);break;
-
-					case "Bart":
-						new Bart(payload[1], payload[2]);break;
-
-					case "Aircraft":
-						new Aircraft(payload[1], payload[2]);break;
-
-					case "Bicycle":
-						new Bicycle(payload[1], payload[2]);break;
-				}
+	public static void loadVehicles() {
+		// Initialize all Vehicles and add to the Vehicle HashMap
+		for (int i = 0; i < 6; i++) {
+			switch (i) {
+				// Aircraft, Bart, Bicycle, Bus, Car, Taxi
+				case 0:
+					Vehicle.vehicles.put("Aircraft", new Aircraft());
+					break;
+				case 1:
+					Vehicle.vehicles.put("Bart", new Bart());
+					break;
+				case 2:
+					Vehicle.vehicles.put("Bicycle", new Bicycle());
+					break;
+				case 3:
+					Vehicle.vehicles.put("Bus", new Bus());
+					break;
+				case 4:
+					Vehicle.vehicles.put("Car", new Car());
+					break;
+				case 5:
+					Vehicle.vehicles.put("Taxi", new Taxi());
+					break;
 			}
-		}catch (IOException e){
-			e.printStackTrace();
 		}
 	}
+
 }

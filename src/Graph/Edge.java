@@ -1,5 +1,7 @@
 package Graph;
 
+import WorldObjects.Vehicle;
+
 /**
  * Created by Ashwin on 2/3/2017.
  */
@@ -7,9 +9,9 @@ public class Edge {
 	private Location from;
 	public Location to;
 	double weight;
-	private String vehicleType;
+	private Vehicle vehicleType;
 
-	Edge(Location from, Location to, double weight, String vehicleType) {
+	Edge(Location from, Location to, double weight, Vehicle vehicleType) {
 		this.from = from;
 		this.to = to;
 		this.weight = weight;
