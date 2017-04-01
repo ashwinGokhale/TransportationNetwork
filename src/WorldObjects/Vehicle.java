@@ -1,9 +1,10 @@
 package WorldObjects;
 
 import Graph.Location;
-import Main.Visualize;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * @author Ashwin Gokhale.
@@ -58,13 +59,13 @@ public class Vehicle{
 
 		switch (typeOfCost){
 			case 1:
-				return unitCost;
+				return unitCost; // Fixed Cost
 
 			case 2:
-				return unitCost + (distance * 2); // $2 per mile
+				return unitCost + (distance * 2); // Fixed Cost + $2 per mile
 
 			case 3:
-				return distance / (30 * unitCost); // Cost per gallon per mile
+				return (unitCost / 25) * distance; // Cost per gallon per mile. $3 a gallon and 25 mpg
 
 			default:
 				return 0.0;

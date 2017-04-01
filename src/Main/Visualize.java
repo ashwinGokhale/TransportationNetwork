@@ -1,15 +1,16 @@
 package Main;
 
-import Graph.*;
-import WorldObjects.*;
-import processing.awt.PSurfaceAWT.SmoothCanvas;
+import Graph.Edge;
+import Graph.Graph;
+import Graph.Location;
+import WorldObjects.Passenger;
+import WorldObjects.Vehicle;
 import processing.core.PApplet;
-import processing.core.PSurface;
 import processing.core.PImage;
 import settings.SettingsParser;
 
-import javax.swing.*;
-import java.awt.*;
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -17,27 +18,41 @@ import java.util.Arrays;
  * @author Ashwin Gokhale.
  */
 public class Visualize extends PApplet{
-	PImage bg;
 	public static Graph g;
 	public static ArrayList<Location> locations = new ArrayList<>();
 	public static ArrayList<Passenger> passengers = new ArrayList<>();
-	float x;
-	float y;
-	int passengerIndex = 0;
-	int locIndex = 1;
-	ArrayList<Location> path;
-	ArrayList<TextLabel> labels = new ArrayList<>();
+	private PImage bg;
+	private float x;
+	private float y;
+	private int h = 20;
+	private int passengerIndex = 0;
+	private int locIndex = 1;
+	private int sizeX = 1700;
+	private int sizeY = 900;
+	private ArrayList<Location> path;
+	private ArrayList<TextLabel> labels = new ArrayList<>();
+
+	private Visualize(int sizeX, int sizeY) {
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
+	}
 
 	public static void main(String args[]) {
-		PApplet.main("Main.Visualize");
+		Visualize v = new Visualize(1700, 900);
+		v.runSketch();
 	}
 
 	public void settings(){
-		size(1700, 900);
+		size(sizeX, sizeY, JAVA2D);
+		smooth();
+
 	}
 
 	public void setup() {
-		bg = loadImage("Main/Map.png");
+		URL url = getClass().getResource("Map.PNG");
+		File file = new File(url.getPath());
+
+		bg = loadImage(file.getAbsolutePath());
 		g = new Graph();
 		SettingsParser.loadVehicles();
 		SettingsParser.loadLocations();
@@ -48,19 +63,17 @@ public class Visualize extends PApplet{
 			g.computePaths(p);
 			ArrayList<Location> personPath = Graph.getShortestPathTo(p.getDest());
 			if (personPath.get(0).equals(personPath.get(1)))
-				p.setPath(new ArrayList<Location>(Arrays.asList(p.getCurrentLoc(), p.getCurrentLoc())));
+				p.setPath(new ArrayList<>(Arrays.asList(p.getCurrentLoc(), p.getCurrentLoc())));
 			else
 				p.setPath(personPath);
 			System.out.printf("%s path: %s Using: %s   Total Cost: $%.2f\n", p.getName(), p.getPath(), p.getVehiclePreference(), p.calculateCost());
 		}
 
 		background(255);
-		smooth();
 
 		path = passengers.get(passengerIndex).getPath();
 		x = path.get(0).getX();
 		y = path.get(0).getY();
-
 	}
 
 	public void draw(){
@@ -113,7 +126,6 @@ public class Visualize extends PApplet{
 					text(passengers.get(passengerIndex).getName(), x-10, y-20);
 
 					// Print all passenger's paths in the white space to the right
-					int h = 20;
 					for (Passenger p : passengers){
 
 						// If passenger could not find a path to their destination, their path would be: [currentLoc, currentLoc]
@@ -164,3 +176,4 @@ public class Visualize extends PApplet{
 		System.out.printf("(%d, %d)\n",mouseX, mouseY);
 	}
 }
+

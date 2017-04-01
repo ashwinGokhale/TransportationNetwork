@@ -7,6 +7,6 @@ public class Car extends Vehicle{
 
 	// costOfTravel = distance / unitCost
 	public Car() {
-		super( 50, 0, 2.4, 3);
-	}
+        super(50, 0, 3, 3);
+    }
 }
